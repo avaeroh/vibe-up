@@ -27,7 +27,8 @@ Turn a raw idea into a high-level, validated foundation that can be approved bef
 4. Identify security concerns and hard blockers.
 5. Note obvious usability concerns.
 6. Convert the approved direction into epics.
-7. Ask for user approval before moving to story creation.
+7. Capture the approved foundation in `docs/workflow/initial_setup.md` using `templates/initial_setup_record_template.md` when documentation capture is enabled.
+8. Ask for user approval before moving to story creation.
 
 ## Outputs
 
@@ -35,3 +36,4 @@ Turn a raw idea into a high-level, validated foundation that can be approved bef
 - High-level architecture
 - Initial security findings
 - Epics
+- Initial setup record

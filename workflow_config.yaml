@@ -35,6 +35,189 @@ security:
 coordination:
   team_mum_enabled: true
   team_mum_mode: optional # optional | off
+  team_mum_selection_strategy: utilization-and-relevance # utilization-and-relevance | full-check; fall back to relevance-first when utilization data is unavailable
+  team_mum_max_consulted_roles: 5
+  team_mum_consultation_rounds: 1
+  team_mum_emit_extra_consultation_as_future_actions: true
+  team_mum_max_future_actions: 5
+  team_mum_keep_notes_concise: true
+  team_mum_max_bullets_per_section: 3
+  team_mum_check_in_frequency: stage-or-handoff-risk # once-per-stage | handoff-risk | stage-or-handoff-risk
+  team_mum_reflect_on_recent_agent_utilization: true
+
+swarm:
+  enabled: true
+  selection_strategy: referenced-first # referenced-first | full-panel
+  max_swarm_depth: 1
+  allow_sub_swarms: false
+  consultation_rounds: 1
+  max_roles_per_swarm: 5
+  max_tokens_per_swarm_notes: 1200 # soft cap unless the host app can meter tokens directly; role and bullet caps remain the hard backstop
+  emit_recursive_requests_as_future_actions: true
+  max_future_actions: 5
+  keep_role_notes_concise: true
+  max_bullets_per_role_note: 3
+  full_panel_is_opt_in: true # enabling full-panel may significantly increase token use
+
+role_selection:
+  require_role_definition_for_auto_selection: true
+  require_aliases_for_auto_selection: true
+  warn_on_unregistered_roles: true
+  warn_on_roles_missing_base_configuration: true
+  exclude_roles_missing_base_configuration_from_auto_selection: true
+
+role_definitions:
+  business-analyst:
+    default_priority: 1
+    agent_file: agents/senior_business_analyst.md
+    skill: business-analyst
+    aliases:
+      - business analyst
+      - analyst
+      - ba
+      - requirements
+      - backlog
+    selection_hints:
+      - requirement
+      - acceptance criteria
+      - story
+      - backlog
+      - scope
+  architect:
+    default_priority: 2
+    agent_file: agents/senior_systems_architect.md
+    skill: architect
+    aliases:
+      - architect
+      - architecture
+      - systems architect
+      - system design
+      - technical design
+    selection_hints:
+      - architecture
+      - interface
+      - contract
+      - boundary
+      - integration
+  developer:
+    default_priority: 3
+    agent_file: agents/senior_developer.md
+    skill: developer
+    aliases:
+      - developer
+      - dev
+      - engineer
+      - senior developer
+      - implementation
+    selection_hints:
+      - implementation
+      - refactor
+      - code
+      - maintainability
+      - technical debt
+  qa:
+    default_priority: 4
+    agent_file: agents/senior_qa_engineer.md
+    skill: qa
+    aliases:
+      - qa
+      - tester
+      - test engineer
+      - quality engineer
+      - quality
+    selection_hints:
+      - test
+      - regression
+      - bug
+      - coverage
+      - defect
+  security:
+    default_priority: 5
+    agent_file: agents/senior_security_specialist.md
+    skill: security
+    aliases:
+      - security
+      - appsec
+      - security specialist
+      - secure
+      - vulnerability
+    selection_hints:
+      - auth
+      - secret
+      - vulnerability
+      - permission
+      - security
+  ux:
+    default_priority: 6
+    agent_file: agents/ux_researcher.md
+    skill: ux
+    aliases:
+      - ux
+      - user experience
+      - usability
+      - design
+      - ux researcher
+    selection_hints:
+      - usability
+      - flow
+      - friction
+      - interaction
+      - ui
+  domain-researcher:
+    default_priority: 7
+    agent_file: agents/domain_researcher.md
+    skill: domain-researcher
+    aliases:
+      - domain researcher
+      - researcher
+      - discovery
+      - domain
+      - market research
+    selection_hints:
+      - market
+      - competitor
+      - assumption
+      - domain
+      - research
+  qa-architect:
+    default_priority: 8
+    agent_file: agents/qa_architect.md
+    skill: qa-architect
+    aliases:
+      - qa architect
+      - quality architect
+      - test architect
+      - test strategy
+      - release confidence
+    selection_hints:
+      - ci
+      - environment
+      - strategy
+      - pipeline
+      - release confidence
+  team-mum:
+    default_priority: 9
+    agent_file: agents/team_mum.md
+    skill: team-mum
+    aliases:
+      - team mum
+      - mum
+      - facilitator
+      - coordinator
+      - health check
+    selection_hints:
+      - coordination
+      - handoff
+      - integration risk
+      - missing work
+      - follow-up
+
+documentation:
+  capture_initial_setup_record: true
+  capture_proposal_record: true
+  initial_setup_record_path: docs/workflow/initial_setup.md
+  proposal_record_path: docs/workflow/proposal.md
+  consult_stage_records_in_review: true
 
 ux:
   require_research_review: true

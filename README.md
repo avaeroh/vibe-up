@@ -14,6 +14,7 @@ This project is a work in progress. The workflow, packaging, and Codex integrati
   - Implementation
   - Review
 - Story, contract, and test templates
+- Stage record templates for capturing initial setup and proposal outputs
 - Security and QA gates that are strict by default
 
 ## How to use this in Codex
@@ -75,8 +76,28 @@ Recommended flow:
 2. Start with `workflow_config.yaml` to choose the operating mode.
 3. Use the agent prompt files in `agents/` as role-specific instructions.
 4. Use the workflow docs in `workflows/` to drive each stage.
-5. Keep stories in `templates/story_template.md` and include API contracts before implementation.
-6. Run a strict review pass before merging feature branches to `main`.
+5. Capture approved initial setup and proposal outputs in `docs/workflow/` using the stage record templates in `templates/`.
+6. Keep stories in `templates/story_template.md` and include API contracts before implementation.
+7. Run a strict review pass before merging feature branches to `main`.
+8. Run `ruby scripts/validate_workflow.rb` after structural changes to agents, role definitions, skills, or workflow documentation.
+
+### Validate structural changes
+
+Run this from the repo root whenever you add or rename a role, skill, agent file, or stage-record path:
+
+```bash
+ruby scripts/validate_workflow.rb
+```
+
+The validator checks:
+
+- every role in `workflow_config.yaml` has an agent file, skill directory, and agent metadata
+- aliases and priorities are present and non-conflicting
+- agent files and role skill directories are registered in `role_definitions`
+- documentation capture paths and review references stay aligned
+- the README install instructions still mention every shipped skill directory
+
+GitHub Actions also runs the same validator on pushes and pull requests in `.github/workflows/validate-workflow.yml`.
 
 ## Default operating model
 
@@ -86,6 +107,9 @@ Recommended flow:
 - QA is the quality gate and should block merges that would introduce bugs.
 - Stories should be BDD-driven and played back to the user before implementation.
 - `coordination.team_mum_enabled: true` enables the optional Team Mum facilitator by default.
+- `swarm.max_swarm_depth: 1` and `swarm.allow_sub_swarms: false` protect users from recursive sub-swarms by default.
+- `swarm.selection_strategy: referenced-first` makes swarm use explicitly named roles first and otherwise choose the most relevant roles up to the configured limit.
+- `workflow_config.yaml` `role_definitions` is the single source of truth for automatic role selection, aliases, and selection hints.
 
 ### Opt out of Team Mum
 
@@ -99,12 +123,151 @@ coordination:
 
 When this is off, skip the `team_mum.md` role and ignore Team Mum participation notes in the workflow documents.
 
+### Swarm safety limits
+
+Vibe Up treats swarm orchestration as a bounded consultation step, not an open-ended recursive process. The default `workflow_config.yaml` protects users from runaway token usage with:
+
+```yaml
+swarm:
+  enabled: true
+  selection_strategy: referenced-first
+  max_swarm_depth: 1
+  allow_sub_swarms: false
+  consultation_rounds: 1
+  max_roles_per_swarm: 5
+  max_tokens_per_swarm_notes: 1200
+  emit_recursive_requests_as_future_actions: true
+  max_future_actions: 5
+  keep_role_notes_concise: true
+  max_bullets_per_role_note: 3
+  full_panel_is_opt_in: true
+```
+
+What those limits mean:
+
+- `max_swarm_depth: 1`: a swarm can run once, but cannot trigger another swarm beneath it.
+- `allow_sub_swarms: false`: consulted roles must not open further swarm-style consultations.
+- `consultation_rounds: 1`: each listed role gets one pass in the active swarm.
+- `selection_strategy: referenced-first`: if the prompt names roles explicitly, swarm uses those first; if not, it identifies the most relevant roles in priority order up to the configured caps.
+- `max_roles_per_swarm: 5`: limits the total number of roles consulted in a single swarm run.
+- `max_tokens_per_swarm_notes: 1200`: caps the space spent summarizing role outputs. If the host app cannot meter tokens precisely, treat the role-count and bullet caps as the hard backstop and err shorter.
+- `emit_recursive_requests_as_future_actions: true`: if a role implies that another cross-role discussion is needed, that is written out as a `Future Actions` or `Next Steps` item instead of being executed immediately.
+- `max_future_actions: 5`: follow-on consultation requests must be summarised and capped.
+- `keep_role_notes_concise: true`: role summaries should stay compact to avoid wasting context and tokens.
+- `max_bullets_per_role_note: 3`: each consulted role should be summarized in a small bounded note instead of a long replay.
+- `full_panel_is_opt_in: true`: full-panel swarm should stay off by default because it can sharply increase token use and overwhelm smaller contexts.
+
+Recommended safety stance:
+
+- Keep sub-swarms disabled by default.
+- Treat additional consultation needs as queued follow-up work, not immediate execution.
+- Use Team Mum to flag missing handoffs and future coordination work without triggering more consultation loops.
+- Use `referenced-first` as the default stance in apps with tighter context windows.
+- Cap both swarm and Team Mum outputs aggressively when working in smaller-context environments.
+- Treat `swarm.enabled: false` as a hard stop: no consultation, no sub-swarm checks, and no role synthesis.
+
+### Role reference aliases and base configuration
+
+Automatic role selection should only use roles defined in `workflow_config.yaml` under `role_definitions`.
+
+That registry now carries:
+
+- the canonical role id
+- the source agent file
+- the matching skill
+- aliases for explicit role references in prompts
+- selection hints for relevance matching
+- a default priority for tie-breaking
+
+Example aliases in the current config:
+
+- `business-analyst`: `ba`, `analyst`, `requirements`, `backlog`
+- `architect`: `architect`, `architecture`, `systems architect`, `system design`
+- `developer`: `developer`, `dev`, `engineer`, `implementation`
+- `qa`: `qa`, `tester`, `quality engineer`
+- `security`: `security`, `appsec`, `vulnerability`
+- `team-mum`: `team mum`, `facilitator`, `coordinator`, `health check`
+
+Recommended behavior for host apps:
+
+- Resolve explicitly named roles through `role_definitions.*.aliases`.
+- If no roles are named, rank candidate roles by `selection_hints`, then break ties with `default_priority`.
+- If a role exists in the repo but has no `role_definitions` entry, no aliases, or other missing base configuration, exclude it from automatic selection and emit a `Configuration Warnings` section in the response.
+- Do not assume new roles are safe for swarm or Team Mum until they are registered in config.
+
+Base configuration for a new role should include:
+
+- a `role_definitions` entry in `workflow_config.yaml`
+- `agent_file`
+- `skill`
+- `aliases`
+- `selection_hints`
+- `default_priority`
+
+If any of that is missing, swarm and Team Mum should treat the role as manually consultable only, not safe for automatic selection.
+
+This is also where the “hard no-op” rule matters:
+
+- if `swarm.enabled: false`, invoking swarm should stop immediately
+- no role selection should happen
+- no role consultation should happen
+- the response should be a short disabled notice, plus optional non-swarm alternatives
+
+### Enforcement model
+
+These guardrails are defined in prompt/config form. Your host app still needs to load and honor `workflow_config.yaml` for them to be reliably enforced.
+
+To make Vibe Up self-limiting even without perfect host enforcement, the prompts now also tell swarm and Team Mum to:
+
+- stop early when disabled
+- respect configured consultation caps
+- defer deeper consultation into `Future Actions`
+- exclude roles missing base configuration from automatic selection
+- keep outputs bounded and concise
+- fall back to smaller, relevance-based consultation when utilization or token-metering signals are missing
+
+That means the repo is engineered to encourage safe behavior by default, but hard runtime enforcement still depends on the integrating app.
+
+### Team Mum safety limits
+
+Team Mum is also bounded so she behaves like a coordination health check instead of a second swarm:
+
+```yaml
+coordination:
+  team_mum_enabled: true
+  team_mum_mode: optional
+  team_mum_selection_strategy: utilization-and-relevance
+  team_mum_max_consulted_roles: 5
+  team_mum_consultation_rounds: 1
+  team_mum_emit_extra_consultation_as_future_actions: true
+  team_mum_max_future_actions: 5
+  team_mum_keep_notes_concise: true
+  team_mum_max_bullets_per_section: 3
+  team_mum_check_in_frequency: stage-or-handoff-risk
+  team_mum_reflect_on_recent_agent_utilization: true
+```
+
+What those limits mean:
+
+- `team_mum_selection_strategy: utilization-and-relevance`: Team Mum should check in with the most relevant and most-used roles first rather than trying to speak to everyone.
+- If recent utilization data is not available, Team Mum should fall back to relevance-first selection rather than broadening the consultation set.
+- `team_mum_max_consulted_roles: 5`: caps the width of a single coordination pass.
+- `team_mum_consultation_rounds: 1`: keeps Team Mum to one pass per check.
+- `team_mum_emit_extra_consultation_as_future_actions: true`: additional coordination needs are deferred instead of executed immediately.
+- `team_mum_max_future_actions: 5`: follow-on coordination items are capped.
+- `team_mum_keep_notes_concise: true` and `team_mum_max_bullets_per_section: 3`: keep each section bounded and compact.
+- `team_mum_check_in_frequency: stage-or-handoff-risk`: Team Mum should check in once per active workflow stage or when a handoff risk appears.
+- `team_mum_reflect_on_recent_agent_utilization: true`: Team Mum should consider whether the right roles have been used enough, not just whether they exist.
+
 ## Suggested folder structure
 
 ```text
 vibe-up/
 ├── README.md
 ├── workflow_config.yaml
+├── docs/
+│   └── workflow/
+│       └── README.md
 ├── agents/
 │   ├── domain_researcher.md
 │   ├── senior_security_specialist.md
@@ -121,6 +284,8 @@ vibe-up/
 │   ├── 03_implementation.md
 │   └── 04_review.md
 └── templates/
+    ├── initial_setup_record_template.md
+    ├── proposal_record_template.md
     ├── story_template.md
     ├── api_contract_template.md
     └── test_plan_template.md
@@ -156,6 +321,7 @@ Owns implementation quality, code clarity, technical discipline, documentation, 
 
 ### Team Mum
 Acts as the optional facilitator who keeps roles aligned, handoffs complete, concerns voiced, and follow-up work visible.
+She is essentially the regular health check for the project, making sure the team is being used properly and that nothing important is quietly going off the rails.
 Because, obviously, the best products always have their mum's support.
 
 ### QA Architect
@@ -171,7 +337,7 @@ Owns stories, epics, clarification, and BDD acceptance criteria playback.
 Keeps the user experience coherent and usable.
 
 ### Swarm
-Pulls in every available Vibe Up role, uses Team Mum as a facilitator and coordination check, and proposes the strongest path forward with reasons, limitations, and follow-up questions.
+Uses explicitly referenced roles first, or else selects the most relevant roles in priority order up to the configured limits, then uses Team Mum as a coordination check and proposes the strongest path forward with reasons, limitations, and follow-up questions.
 
 ## Coordination Guidance
 
@@ -179,6 +345,9 @@ Pulls in every available Vibe Up role, uses Team Mum as a facilitator and coordi
 - Keep Team Mum optional and facilitative; she should not replace BA, QA, Architecture, Security, or Development ownership.
 - Use Team Mum to surface missing work, anti-patterns, integration concerns, and under-used roles before they become project issues.
 - If `coordination.team_mum_enabled` is `false`, do not invoke Team Mum even if the workflow docs mention her as an optional facilitator.
+- When swarm is active, use Team Mum to identify missing consultation as `Future Actions` or `Next Steps`, not as live sub-swarms.
+- Bound Team Mum by `coordination.team_mum_max_consulted_roles` and `coordination.team_mum_consultation_rounds` so she remains a health check, not a second swarm.
+- Treat Team Mum as a stage health check: once per active workflow stage, or when a handoff risk is detected.
 
 ## Story rules
 

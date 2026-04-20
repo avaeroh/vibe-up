@@ -17,10 +17,12 @@ Turn a raw idea into a high-level, validated foundation that can be approved bef
 4. Security Specialist flags security concerns and hard blockers.
 5. UX Researcher notes obvious usability concerns.
 6. BA converts the approved direction into epics.
-7. User approves the foundation before stories are fleshed out.
+7. Capture the approved foundation in `docs/workflow/initial_setup.md` using `templates/initial_setup_record_template.md` when documentation capture is enabled.
+8. User approves the foundation before stories are fleshed out.
 
 ## Output
 - Problem framing
 - High-level architecture
 - Initial security findings
 - Epics
+- Initial setup record

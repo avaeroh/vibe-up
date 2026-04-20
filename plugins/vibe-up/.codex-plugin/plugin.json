@@ -30,7 +30,7 @@
     "defaultPrompt": [
       "Use $team-mum to check coordination, handoffs, and missing work.",
       "Use $developer to validate implementation readiness and code quality.",
-      "Use $swarm to consult every role and choose a path forward."
+      "Use $swarm to consult the referenced or most relevant roles within the configured limits and choose a path forward."
     ],
     "brandColor": "#0F766E"
   }

@@ -29,7 +29,8 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 5. Review usability and consistency concerns.
 6. Check that the right roles have been heard, handoffs are complete, and missing work is surfaced.
 7. Rewrite the work as stories with BDD acceptance criteria.
-8. Ask for user approval before implementation.
+8. Capture the approved proposal in `docs/workflow/proposal.md` using `templates/proposal_record_template.md` when documentation capture is enabled.
+9. Ask for user approval before implementation.
 
 ## Outputs
 
@@ -39,3 +40,4 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 - UX notes
 - Security notes
 - Coordination notes and suggested follow-up work
+- Proposal record
