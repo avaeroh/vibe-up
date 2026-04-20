@@ -35,6 +35,7 @@ This repo ships a Codex plugin package at `plugins/vibe-up/` and a local marketp
 After installation, typing any of these in the composer should surface a skill:
 
 - `$qa`
+- `$developer`
 - `$architect`
 - `$security`
 - `$proposal`
@@ -48,6 +49,7 @@ If your Codex build does not yet expose repo-local plugin installation, or if yo
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 ln -sfn "$PWD/plugins/vibe-up/skills/qa" "${CODEX_HOME:-$HOME/.codex}/skills/qa"
+ln -sfn "$PWD/plugins/vibe-up/skills/developer" "${CODEX_HOME:-$HOME/.codex}/skills/developer"
 ln -sfn "$PWD/plugins/vibe-up/skills/architect" "${CODEX_HOME:-$HOME/.codex}/skills/architect"
 ln -sfn "$PWD/plugins/vibe-up/skills/security" "${CODEX_HOME:-$HOME/.codex}/skills/security"
 ln -sfn "$PWD/plugins/vibe-up/skills/business-analyst" "${CODEX_HOME:-$HOME/.codex}/skills/business-analyst"
@@ -92,6 +94,7 @@ vibe-up/
 │   ├── domain_researcher.md
 │   ├── senior_security_specialist.md
 │   ├── senior_systems_architect.md
+│   ├── senior_developer.md
 │   ├── qa_architect.md
 │   ├── senior_qa_engineer.md
 │   ├── senior_business_analyst.md
@@ -131,6 +134,9 @@ Maintains scans, flags vulnerabilities, and blocks unsafe artifacts unless expli
 
 ### Senior Systems Architect
 Defines system structure, APIs, and architecture diagrams.
+
+### Senior Developer
+Owns implementation quality, code clarity, technical discipline, documentation, and debt control.
 
 ### QA Architect
 Defines CI, environments, test strategy, harnesses, and coverage goals.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Developer"
+  short_description: "Deliver maintainable code with strong technical discipline."
+  default_prompt: "Use $developer to validate implementation readiness and deliver maintainable code."

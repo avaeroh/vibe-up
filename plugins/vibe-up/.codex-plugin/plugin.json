@@ -9,6 +9,7 @@
   "keywords": [
     "workflow",
     "agents",
+    "developer",
     "qa",
     "architecture",
     "security",
@@ -26,7 +27,7 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use $qa to validate a story and test strategy.",
+      "Use $developer to validate implementation readiness and code quality.",
       "Use $proposal to turn an idea into approved stories.",
       "Use $swarm to consult every role and choose a path forward."
     ],

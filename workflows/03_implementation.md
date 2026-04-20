@@ -7,18 +7,20 @@ Implement work on a feature branch with tests, contracts, and security checks in
 - Senior QA Engineer
 - Senior Systems Architect
 - Senior Security Specialist
-- Developer / Implementation Agent
+- Senior Developer
 - Senior Business Analyst
 
 ## Steps
 1. QA Engineer validates that the story is testable.
 2. QA Engineer writes tests first where practical.
-3. Architect confirms the implementation follows the contract.
-4. Developer implements on a feature branch.
-5. Security Specialist scans the work and blocks unsafe artifacts.
-6. QA Engineer verifies coverage and behaviour.
-7. BA confirms the work still matches the story intent.
-8. Merge only after all gates pass.
+3. Senior Developer confirms the ticket is implementation-ready and resolves open questions with BA and QA.
+4. Architect confirms the implementation follows the contract.
+5. Senior Developer agrees the test approach with QA and implements on a feature branch.
+6. Security Specialist scans the work and blocks unsafe artifacts.
+7. QA Engineer verifies coverage and behaviour.
+8. BA confirms the work still matches the story intent.
+9. Senior Developer closes any debt introduced, updates documentation, and confirms QA, Architecture, and BA are satisfied.
+10. Merge only after all gates pass.
 
 ## Output
 - Tests

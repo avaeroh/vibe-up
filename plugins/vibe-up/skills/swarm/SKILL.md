@@ -16,6 +16,7 @@ Collect the views of the full Vibe Up group, find the strongest area of agreemen
 - Domain Researcher
 - Senior Business Analyst
 - Senior Systems Architect
+- Senior Developer
 - Senior Security Specialist
 - QA Architect
 - Senior QA Engineer
