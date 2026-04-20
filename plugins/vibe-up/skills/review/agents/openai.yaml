@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Review"
+  short_description: "Review changes and capture next-cycle improvements."
+  default_prompt: "Use $review to inspect changes, risks, and follow-up improvements."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Security"
+  short_description: "Review security risks and release blockers."
+  default_prompt: "Use $security to review security risks, scans, and blockers."

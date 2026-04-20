@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Implementation"
+  short_description: "Drive tests, contracts, and gated delivery."
+  default_prompt: "Use $implementation to run the implementation stage with QA and security gates."

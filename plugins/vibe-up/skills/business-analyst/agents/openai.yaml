@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up BA"
+  short_description: "Turn ideas into stories and BDD acceptance criteria."
+  default_prompt: "Use $business-analyst to turn an idea into stories and BDD acceptance criteria."

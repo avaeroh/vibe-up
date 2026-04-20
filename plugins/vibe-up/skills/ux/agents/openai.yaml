@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up UX"
+  short_description: "Check usability, coherence, and user friction."
+  default_prompt: "Use $ux to review usability, flows, and experience consistency."

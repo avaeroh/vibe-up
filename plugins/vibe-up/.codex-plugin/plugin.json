@@ -1,0 +1,34 @@
+{
+  "name": "vibe-up",
+  "version": "0.1.0",
+  "description": "Lean multi-agent workflow skills for Codex.",
+  "author": {
+    "name": "Vibe Up"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "workflow",
+    "agents",
+    "qa",
+    "architecture",
+    "security"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Vibe Up",
+    "shortDescription": "Lean workflow roles for Codex",
+    "longDescription": "Repo-local Codex plugin exposing Vibe Up workflow roles and workflow-stage skills.",
+    "developerName": "Vibe Up",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $qa to validate a story and test strategy.",
+      "Use $proposal to turn an idea into approved stories.",
+      "Use $implementation to run the delivery stage with gates."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

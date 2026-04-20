@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up QA Architect"
+  short_description: "Design test strategy, CI, and quality gates."
+  default_prompt: "Use $qa-architect to design test strategy and quality gates."

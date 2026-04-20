@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Architect"
+  short_description: "Shape structure, contracts, and boundaries."
+  default_prompt: "Use $architect to define system structure and API contracts."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Researcher"
+  short_description: "Frame the domain, assumptions, and constraints."
+  default_prompt: "Use $domain-researcher to frame the problem space and constraints."

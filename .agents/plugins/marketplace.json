@@ -1,0 +1,20 @@
+{
+  "name": "vibe-up-local",
+  "interface": {
+    "displayName": "Vibe Up Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "vibe-up",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vibe-up"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

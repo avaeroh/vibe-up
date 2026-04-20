@@ -1,0 +1,36 @@
+mode: STRICT # STRICT | AUTO_APPROVE
+
+approvals:
+  initial_setup: explicit
+  proposal: explicit
+  implementation_start: explicit
+  pre_merge: explicit
+  auto_allow_prompt_enabled: true
+  auto_allow_toggle_back: true
+
+quality_gate:
+  require_contracts: true
+  require_tests_before_code: true
+  require_security_pass: true
+  block_known_vulnerabilities: true
+  block_known_issues_from_merge: true
+  qa_is_final_gate: true
+
+branching:
+  strategy: feature-branch
+  merge_target: main
+  require_pr_review: true
+
+coverage:
+  unit: target
+  integration: target
+  e2e: target
+
+security:
+  scan_dependencies: true
+  scan_secrets: true
+  scan_sast: true
+  allow_user_override: false
+
+ux:
+  require_research_review: true

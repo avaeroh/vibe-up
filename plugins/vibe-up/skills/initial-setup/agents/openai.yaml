@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Initial Setup"
+  short_description: "Turn an idea into an approved foundation."
+  default_prompt: "Use $initial-setup to frame an idea, risks, and epics."

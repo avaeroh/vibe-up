@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up QA"
+  short_description: "Validate stories, tests, coverage, and defects."
+  default_prompt: "Use $qa to validate a story, test strategy, and quality risks."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Proposal"
+  short_description: "Refine scope into stories and acceptance criteria."
+  default_prompt: "Use $proposal to turn a feature idea into approved stories."
