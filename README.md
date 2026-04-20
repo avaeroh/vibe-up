@@ -85,6 +85,19 @@ Recommended flow:
 - Security findings block artifacts unless the user explicitly overrides them.
 - QA is the quality gate and should block merges that would introduce bugs.
 - Stories should be BDD-driven and played back to the user before implementation.
+- `coordination.team_mum_enabled: true` enables the optional Team Mum facilitator by default.
+
+### Opt out of Team Mum
+
+If you do not want Team Mum participating in proposal, implementation, review, or swarm-style coordination, set this in `workflow_config.yaml`:
+
+```yaml
+coordination:
+  team_mum_enabled: false
+  team_mum_mode: off
+```
+
+When this is off, skip the `team_mum.md` role and ignore Team Mum participation notes in the workflow documents.
 
 ## Suggested folder structure
 
@@ -164,6 +177,7 @@ Pulls in every available Vibe Up role, uses Team Mum as a facilitator and coordi
 - Use Team Mum when work spans multiple roles, handoffs are risky, or scope is moving quickly.
 - Keep Team Mum optional and facilitative; she should not replace BA, QA, Architecture, Security, or Development ownership.
 - Use Team Mum to surface missing work, anti-patterns, integration concerns, and under-used roles before they become project issues.
+- If `coordination.team_mum_enabled` is `false`, do not invoke Team Mum even if the workflow docs mention her as an optional facilitator.
 
 ## Story rules
 

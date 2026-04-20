@@ -8,6 +8,7 @@ This repository defines a custom multi-agent workflow for Codex. Treat the files
 - Use the markdown files in `agents/` as role prompts and responsibility definitions.
 - Use the markdown files in `workflows/` to decide which stage the work is in and what outputs are required before moving forward.
 - Use the templates in `templates/` when creating stories, contracts, and test plans.
+- Treat `workflow_config.yaml` as authoritative for optional role participation, including whether `team_mum.md` should be active.
 
 ## Working Rules
 
@@ -35,7 +36,7 @@ When a task needs one of these perspectives, load the corresponding file in `age
 - `senior_systems_architect.md`
 - `senior_developer.md`
 - `senior_security_specialist.md`
-- `team_mum.md`
+- `team_mum.md` when `coordination.team_mum_enabled` is `true`
 - `qa_architect.md`
 - `senior_qa_engineer.md`
 - `ux_researcher.md`

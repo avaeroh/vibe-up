@@ -32,5 +32,9 @@ security:
   scan_sast: true
   allow_user_override: false
 
+coordination:
+  team_mum_enabled: true
+  team_mum_mode: optional # optional | off
+
 ux:
   require_research_review: true
