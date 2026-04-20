@@ -18,6 +18,7 @@ Implement work on a feature branch with tests, contracts, and security checks in
 - Senior Systems Architect
 - Senior Security Specialist
 - Senior Business Analyst
+- Team Mum (optional facilitator)
 
 ## Steps
 
@@ -29,8 +30,9 @@ Implement work on a feature branch with tests, contracts, and security checks in
 6. Scan the work and block unsafe artifacts.
 7. Verify coverage and behaviour.
 8. Confirm the work still matches story intent.
-9. Close any debt introduced, update documentation, and confirm QA, Architecture, and BA are satisfied.
-10. Merge only after all gates pass.
+9. Check coordination, unresolved handoffs, integration concerns, and missing follow-up work.
+10. Close any debt introduced, update documentation, and confirm QA, Architecture, and BA are satisfied.
+11. Merge only after all gates pass.
 
 ## Outputs
 
@@ -38,4 +40,5 @@ Implement work on a feature branch with tests, contracts, and security checks in
 - Implementation
 - Security report
 - QA verdict
+- Coordination notes
 - Merge decision

@@ -9,6 +9,7 @@ Implement work on a feature branch with tests, contracts, and security checks in
 - Senior Security Specialist
 - Senior Developer
 - Senior Business Analyst
+- Team Mum (optional facilitator)
 
 ## Steps
 1. QA Engineer validates that the story is testable.
@@ -19,12 +20,14 @@ Implement work on a feature branch with tests, contracts, and security checks in
 6. Security Specialist scans the work and blocks unsafe artifacts.
 7. QA Engineer verifies coverage and behaviour.
 8. BA confirms the work still matches the story intent.
-9. Senior Developer closes any debt introduced, updates documentation, and confirms QA, Architecture, and BA are satisfied.
-10. Merge only after all gates pass.
+9. Team Mum checks coordination, unresolved handoffs, integration concerns, and missing follow-up work.
+10. Senior Developer closes any debt introduced, updates documentation, and confirms QA, Architecture, and BA are satisfied.
+11. Merge only after all gates pass.
 
 ## Output
 - Tests
 - Implementation
 - Security report
 - QA verdict
+- Coordination notes
 - Merge decision

@@ -19,6 +19,7 @@ Inspect the latest implementation and improve both the product and the process.
 - QA Architect
 - Senior QA Engineer
 - UX Researcher
+- Team Mum (optional facilitator)
 
 ## Steps
 
@@ -26,12 +27,14 @@ Inspect the latest implementation and improve both the product and the process.
 2. Confirm documentation stays in sync.
 3. Identify security, QA, and architecture follow-ups.
 4. Check whether the backlog or story structure needs rework.
-5. Propose technical and process efficiencies.
-6. Capture improvements for the next cycle.
+5. Check whether concerns, handoffs, and under-used roles are being missed.
+6. Propose technical and process efficiencies.
+7. Capture improvements for the next cycle.
 
 ## Outputs
 
 - Review summary
 - Risks introduced
 - Docs updates needed
+- Coordination and utilisation notes
 - Improvement proposals

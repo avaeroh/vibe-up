@@ -17,6 +17,7 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 - Senior Systems Architect
 - Senior Security Specialist
 - UX Researcher
+- Team Mum (optional facilitator)
 - User
 
 ## Steps
@@ -26,8 +27,9 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 3. Identify structural concerns and contract implications.
 4. Check for risks and policy issues.
 5. Review usability and consistency concerns.
-6. Rewrite the work as stories with BDD acceptance criteria.
-7. Ask for user approval before implementation.
+6. Check that the right roles have been heard, handoffs are complete, and missing work is surfaced.
+7. Rewrite the work as stories with BDD acceptance criteria.
+8. Ask for user approval before implementation.
 
 ## Outputs
 
@@ -36,3 +38,4 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 - API contract notes
 - UX notes
 - Security notes
+- Coordination notes and suggested follow-up work

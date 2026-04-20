@@ -21,14 +21,16 @@ Collect the views of the full Vibe Up group, find the strongest area of agreemen
 - QA Architect
 - Senior QA Engineer
 - UX Researcher
+- Team Mum as facilitator and coordination check
 
 ## Process
 
 1. Restate the user request or problem in a short neutral summary.
 2. Consult each available role and capture its recommendation, concerns, and preferred next step.
-3. Compare the responses and identify where the roles agree, where they disagree, and what assumptions are driving the disagreement.
-4. Choose the most supported path forward. If there is no clear consensus, choose the safest reasonable path and say why.
-5. Produce a proposal that the user can approve, challenge, or refine.
+3. Use Team Mum to check that the right roles were consulted, concerns were surfaced, and no important handoff or integration issue was skipped.
+4. Compare the responses and identify where the roles agree, where they disagree, and what assumptions are driving the disagreement.
+5. Choose the most supported path forward. If there is no clear consensus, choose the safest reasonable path and say why.
+6. Produce a proposal that the user can approve, challenge, or refine.
 
 ## Output Format
 
@@ -46,6 +48,10 @@ Explain why it was chosen, including the key reasons shared by multiple roles.
 
 Summarize the important concerns or unique insights from each consulted role.
 
+### Coordination Notes
+
+Summarize Team Mum's view on missing perspectives, weak handoffs, integration concerns, or suggested follow-up work.
+
 ### Limitations
 
 Call out the main risks, trade-offs, unresolved disagreements, or missing evidence.
@@ -57,6 +63,7 @@ Ask the user only the questions needed to confirm or refine the proposal.
 ## Working Rules
 
 - Consult every listed role before presenting the proposal.
+- Use Team Mum to verify that consultation and handoffs were complete.
 - Prefer the most agreed recommendation, not the loudest or most complex one.
 - Preserve minority concerns when they materially affect risk, sequencing, scope, or user impact.
 - Keep the final proposal concrete enough to turn into stories or implementation steps.

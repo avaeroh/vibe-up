@@ -34,6 +34,7 @@ This repo ships a Codex plugin package at `plugins/vibe-up/` and a local marketp
 
 After installation, typing any of these in the composer should surface a skill:
 
+- `$team-mum`
 - `$qa`
 - `$developer`
 - `$architect`
@@ -49,6 +50,7 @@ If your Codex build does not yet expose repo-local plugin installation, or if yo
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 ln -sfn "$PWD/plugins/vibe-up/skills/qa" "${CODEX_HOME:-$HOME/.codex}/skills/qa"
+ln -sfn "$PWD/plugins/vibe-up/skills/team-mum" "${CODEX_HOME:-$HOME/.codex}/skills/team-mum"
 ln -sfn "$PWD/plugins/vibe-up/skills/developer" "${CODEX_HOME:-$HOME/.codex}/skills/developer"
 ln -sfn "$PWD/plugins/vibe-up/skills/architect" "${CODEX_HOME:-$HOME/.codex}/skills/architect"
 ln -sfn "$PWD/plugins/vibe-up/skills/security" "${CODEX_HOME:-$HOME/.codex}/skills/security"
@@ -95,6 +97,7 @@ vibe-up/
 │   ├── senior_security_specialist.md
 │   ├── senior_systems_architect.md
 │   ├── senior_developer.md
+│   ├── team_mum.md
 │   ├── qa_architect.md
 │   ├── senior_qa_engineer.md
 │   ├── senior_business_analyst.md
@@ -138,6 +141,9 @@ Defines system structure, APIs, and architecture diagrams.
 ### Senior Developer
 Owns implementation quality, code clarity, technical discipline, documentation, and debt control.
 
+### Team Mum
+Acts as the optional facilitator who keeps roles aligned, handoffs complete, concerns voiced, and follow-up work visible.
+
 ### QA Architect
 Defines CI, environments, test strategy, harnesses, and coverage goals.
 
@@ -151,7 +157,13 @@ Owns stories, epics, clarification, and BDD acceptance criteria playback.
 Keeps the user experience coherent and usable.
 
 ### Swarm
-Pulls in every available Vibe Up role, compares their positions, and proposes the strongest path forward with reasons, limitations, and follow-up questions.
+Pulls in every available Vibe Up role, uses Team Mum as a facilitator and coordination check, and proposes the strongest path forward with reasons, limitations, and follow-up questions.
+
+## Coordination Guidance
+
+- Use Team Mum when work spans multiple roles, handoffs are risky, or scope is moving quickly.
+- Keep Team Mum optional and facilitative; she should not replace BA, QA, Architecture, Security, or Development ownership.
+- Use Team Mum to surface missing work, anti-patterns, integration concerns, and under-used roles before they become project issues.
 
 ## Story rules
 

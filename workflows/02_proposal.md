@@ -8,6 +8,7 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 - Senior Systems Architect
 - Senior Security Specialist
 - UX Researcher
+- Team Mum (optional facilitator)
 - User
 
 ## Steps
@@ -16,8 +17,9 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 3. Architect identifies structural concerns and contract implications.
 4. Security Specialist checks for risks and policy issues.
 5. UX Researcher checks usability and consistency.
-6. BA rewrites the work as stories with BDD acceptance criteria.
-7. User approves the story pack before implementation.
+6. Team Mum checks that the right roles have been heard, handoffs are complete, and missing work is surfaced.
+7. BA rewrites the work as stories with BDD acceptance criteria.
+8. User approves the story pack before implementation.
 
 ## Output
 - Story list
@@ -25,3 +27,4 @@ Refine the idea into a story-ready proposal with clear scope, risks, and accepta
 - API contract notes
 - UX notes
 - Security notes
+- Coordination notes and suggested follow-up work

@@ -10,6 +10,7 @@
     "workflow",
     "agents",
     "developer",
+    "facilitation",
     "qa",
     "architecture",
     "security",
@@ -27,8 +28,8 @@
       "Write"
     ],
     "defaultPrompt": [
+      "Use $team-mum to check coordination, handoffs, and missing work.",
       "Use $developer to validate implementation readiness and code quality.",
-      "Use $proposal to turn an idea into approved stories.",
       "Use $swarm to consult every role and choose a path forward."
     ],
     "brandColor": "#0F766E"

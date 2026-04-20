@@ -33,7 +33,9 @@ When a task needs one of these perspectives, load the corresponding file in `age
 - `domain_researcher.md`
 - `senior_business_analyst.md`
 - `senior_systems_architect.md`
+- `senior_developer.md`
 - `senior_security_specialist.md`
+- `team_mum.md`
 - `qa_architect.md`
 - `senior_qa_engineer.md`
 - `ux_researcher.md`

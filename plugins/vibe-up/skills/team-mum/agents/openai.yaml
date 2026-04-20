@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Team Mum"
+  short_description: "Keep the agents aligned, utilised, and honest."
+  default_prompt: "Use $team-mum to check coordination, handoffs, and missing work across the Vibe Up roles."
