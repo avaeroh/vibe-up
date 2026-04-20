@@ -156,6 +156,7 @@ Owns implementation quality, code clarity, technical discipline, documentation, 
 
 ### Team Mum
 Acts as the optional facilitator who keeps roles aligned, handoffs complete, concerns voiced, and follow-up work visible.
+Because, obviously, the best products always have their mum's support.
 
 ### QA Architect
 Defines CI, environments, test strategy, harnesses, and coverage goals.
