@@ -22,11 +22,28 @@ Open this folder in Codex and treat it like a working repository. Codex CLI can 
 
 This repo now includes a root `AGENTS.md` so Codex has a standard discovery entry point. The `AGENTS.md` file points Codex to `workflow_config.yaml`, `agents/`, `workflows/`, and `templates/`.
 
-If you want the Vibe Up roles and workflow stages to appear in the Codex `$` picker, you must also install the packaged skills from `plugins/vibe-up/skills` into Codex's local discovery directory. Packaging the plugin in this repo is not enough by itself.
+If you want the Vibe Up roles and workflow stages to appear in the Codex `$` picker, use the packaged plugin in `plugins/vibe-up/` as the primary installation path.
 
-### Install the `$` skills
+### Preferred install in Codex
 
-Run these commands from the repo root:
+This repo ships a Codex plugin package at `plugins/vibe-up/` and a local marketplace entry at `.agents/plugins/marketplace.json`.
+
+1. Open this repo in Codex.
+2. Install the `Vibe Up` plugin from the repo-local Codex marketplace.
+3. Restart or reload Codex if the `$` picker does not refresh immediately.
+
+After installation, typing any of these in the composer should surface a skill:
+
+- `$qa`
+- `$architect`
+- `$security`
+- `$proposal`
+- `$implementation`
+- `$swarm`
+
+### Active development install
+
+If your Codex build does not yet expose repo-local plugin installation, or if you are actively editing the skills and want changes to reflect immediately, install the skill folders directly from the repo root with symlinks:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
@@ -41,19 +58,10 @@ ln -sfn "$PWD/plugins/vibe-up/skills/initial-setup" "${CODEX_HOME:-$HOME/.codex}
 ln -sfn "$PWD/plugins/vibe-up/skills/proposal" "${CODEX_HOME:-$HOME/.codex}/skills/proposal"
 ln -sfn "$PWD/plugins/vibe-up/skills/implementation" "${CODEX_HOME:-$HOME/.codex}/skills/implementation"
 ln -sfn "$PWD/plugins/vibe-up/skills/review" "${CODEX_HOME:-$HOME/.codex}/skills/review"
+ln -sfn "$PWD/plugins/vibe-up/skills/swarm" "${CODEX_HOME:-$HOME/.codex}/skills/swarm"
 ```
 
 Then restart Codex so it reindexes the installed skills.
-
-### Verify installation
-
-After restarting Codex, typing any of these in the composer should surface a skill:
-
-- `$qa`
-- `$architect`
-- `$security`
-- `$proposal`
-- `$implementation`
 
 If you prefer copying instead of symlinking, copy the folders from `plugins/vibe-up/skills/` into `${CODEX_HOME:-$HOME/.codex}/skills/` with the same directory names.
 
@@ -135,6 +143,9 @@ Owns stories, epics, clarification, and BDD acceptance criteria playback.
 
 ### UX Researcher
 Keeps the user experience coherent and usable.
+
+### Swarm
+Pulls in every available Vibe Up role, compares their positions, and proposes the strongest path forward with reasons, limitations, and follow-up questions.
 
 ## Story rules
 

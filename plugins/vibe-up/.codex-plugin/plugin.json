@@ -11,7 +11,8 @@
     "agents",
     "qa",
     "architecture",
-    "security"
+    "security",
+    "swarm"
   ],
   "skills": "./skills/",
   "interface": {
@@ -27,7 +28,7 @@
     "defaultPrompt": [
       "Use $qa to validate a story and test strategy.",
       "Use $proposal to turn an idea into approved stories.",
-      "Use $implementation to run the delivery stage with gates."
+      "Use $swarm to consult every role and choose a path forward."
     ],
     "brandColor": "#0F766E"
   }

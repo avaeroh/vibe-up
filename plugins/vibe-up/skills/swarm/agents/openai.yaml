@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Up Swarm"
+  short_description: "Consult every role and synthesize a proposal."
+  default_prompt: "Use $swarm to consult every Vibe Up role and propose the best path forward."
