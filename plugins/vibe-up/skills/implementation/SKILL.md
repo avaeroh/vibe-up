@@ -23,10 +23,10 @@ Implement work on a feature branch with tests, contracts, and security checks in
 ## Steps
 
 1. Validate that the story is testable.
-2. Write tests first where practical.
-3. Confirm the ticket is implementation-ready and resolve open questions with BA and QA.
+2. Write requirement-aligned tests first at the correct level, whether unit, API, UI, or end-to-end.
+3. Confirm the ticket is implementation-ready and resolve open questions with BA and QA before production code starts.
 4. Confirm the implementation follows the contract.
-5. Agree the test approach with QA and implement on a feature branch.
+5. Agree the TDD approach with QA and implement on a feature branch only after the initial tests exist.
 6. Scan the work and block unsafe artifacts.
 7. Verify coverage and behaviour.
 8. Confirm the work still matches story intent.

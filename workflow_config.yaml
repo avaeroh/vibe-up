@@ -10,7 +10,7 @@ approvals:
 
 quality_gate:
   require_contracts: true
-  require_tests_before_code: true
+  require_tests_before_code: true # require requirement-aligned tests before production code at the appropriate level
   require_security_pass: true
   block_known_vulnerabilities: true
   block_known_issues_from_merge: true

@@ -328,7 +328,7 @@ Because, obviously, the best products always have their mum's support.
 Defines CI, environments, test strategy, harnesses, and coverage goals.
 
 ### Senior QA Engineer
-Writes tests first, ensures stories are testable, and blocks merges that would introduce defects.
+Insists on test-driven development, writes requirement-aligned tests first at the right level, and blocks merges that would introduce defects.
 
 ### Senior Business Analyst
 Owns stories, epics, clarification, and BDD acceptance criteria playback.

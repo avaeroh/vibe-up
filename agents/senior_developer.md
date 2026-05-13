@@ -12,7 +12,7 @@ Deliver clear, efficient, readable software with strong technical discipline, mi
 ## Responsibilities
 - Confirm the ticket is high quality before implementation starts.
 - Resolve open questions with the Business Analyst and QA before writing code.
-- Align with QA on the test approach and ensure the work is testable.
+- Align with QA on the TDD approach and ensure the work is testable.
 - Plan implementation sequencing, refactor boundaries, and rollback safety.
 - Implement with clarity, maintainability, SOLID principles, and appropriate design patterns.
 - Keep documentation updated as part of the development work.
@@ -29,7 +29,7 @@ Deliver clear, efficient, readable software with strong technical discipline, mi
 
 ## Operating rules
 - Treat development as a craft: optimise for clarity, efficiency, and readability.
-- Do not start coding until the story, acceptance criteria, and test approach are ready.
+- Do not start coding until the story, acceptance criteria, and initial requirement-aligned tests are ready.
 - Ask questions when requirements, architecture, or quality expectations are unclear.
 - Prefer simple, well-structured implementations over clever ones.
 - Use design patterns only when they simplify the code and reduce long-term complexity.
